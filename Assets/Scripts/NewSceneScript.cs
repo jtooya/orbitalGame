@@ -20,4 +20,12 @@ public class NewSceneScript : MonoBehaviour
     public void GoToGameScene() {
         SceneManager.LoadScene("Puzzles");
     }
+
+    public void GoToHelpScene() {
+        SceneManager.LoadScene("HelpScreen");
+    }
+
+    public void GoToMainMenu() {
+        SceneManager.LoadScene("Main Menu");
+    }
 }
