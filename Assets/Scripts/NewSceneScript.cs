@@ -18,7 +18,7 @@ public class NewSceneScript : MonoBehaviour
     }
 
     public void GoToGameScene() {
-        SceneManager.LoadScene("Puzzles");
+        SceneManager.LoadScene("ComputerScreen");
     }
 
     public void GoToHelpScene() {
@@ -27,5 +27,9 @@ public class NewSceneScript : MonoBehaviour
 
     public void GoToMainMenu() {
         SceneManager.LoadScene("Main Menu");
+    }
+
+    public void Quit() {
+        Application.Quit();
     }
 }
