@@ -28,7 +28,7 @@ public class SimonSays : MonoBehaviour
     private SpriteRenderer blueSpriteRenderer;
     private SpriteRenderer greenSpriteRenderer;
     private SpriteRenderer yellowSpriteRenderer;
-    private SpriteRenderer greyLightRenderer;
+    public SpriteRenderer greyLightRenderer;
 
     public Sprite redOriginal;
     public Sprite redBright;
@@ -119,7 +119,7 @@ public class SimonSays : MonoBehaviour
 
         for (int i = 0; i < length; i++) 
         {
-            int digit = Random.Range(0, 4);
+            int digit = UnityEngine.Random.Range(0, 4);
             stringBuilder.Append(digit.ToString());
         }
 
@@ -273,12 +273,12 @@ public class SimonSays : MonoBehaviour
                 brightSprite = redBright;
                 break;
             case '1' :
-                spriteRenderer = blueSpriteRenderer;
-                brightSprite = blueBright;
-                break;
-            case '2' :
                 spriteRenderer = greenSpriteRenderer;
                 brightSprite = greenBright;
+                break;
+            case '2' :
+                spriteRenderer = blueSpriteRenderer;
+                brightSprite = blueBright;
                 break;
             case '3' :
                 spriteRenderer = yellowSpriteRenderer;
@@ -324,8 +324,5 @@ public class SimonSays : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!acceptingInput) { return; }
-
-        if ()
     }
 }
