@@ -26,11 +26,11 @@ The designs are drawn on Aseprite and the inspiration for the symbols are from a
 SFX were entirely generated on SFXR, a free 16-bit audio SFX generator sourced online.
 
 ### Plan: 
-By 2nd June - Create 4 puzzles, along with basic UI. 
-By 9th June - Create 4 more puzzles, finish the core sanity and time system, along with simple UI representation 
-By 16th June - Create 2 more unique puzzles, finish SFX implementation, finish writing dialogue and storyline 
-By 23rd June - Create 2 more unique puzzles, touch up UI, implement nightmare sequences, collecting motivational message/stories by students for extension feature of game 
-By 30th June - Ceate last 4 unique puzzles, touch up art, finish endless mode 
-1st July - 14th July - User testing, Fixing bugs, touching up art, finishing nightmare sequence, adding other extension features (TBC) 
-15th July - 30th July - Finalise art and music. (Maybe look into somehow implementing a modding API?) 
-1st Aug - Splashdown - Bug fixing, player testing
+- By 2nd June - Create 4 puzzles, along with basic UI. 
+- By 9th June - Create 4 more puzzles, finish the core sanity and time system, along with simple UI representation 
+- By 16th June - Create 2 more unique puzzles, finish SFX implementation, finish writing dialogue and storyline 
+- By 23rd June - Create 2 more unique puzzles, touch up UI, implement nightmare sequences, collecting motivational message/stories by students for extension feature of game 
+- By 30th June - Ceate last 4 unique puzzles, touch up art, finish endless mode 
+- 1st July - 14th July - User testing, Fixing bugs, touching up art, finishing nightmare sequence, adding other extension features (TBC) 
+- 15th July - 30th July - Finalise art and music. (Maybe look into somehow implementing a modding API?) 
+- 1st Aug - Splashdown - Bug fixing, player testing
