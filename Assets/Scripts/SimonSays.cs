@@ -9,12 +9,12 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Rendering.Universal.Internal;
 
-public class SimonSays : MonoBehaviour
+public class SimonSays : Puzzle
 {
     public readonly int STARTINGDIFFICULTY = 2;
     private readonly char R = '0';
-    private readonly char B = '1';
-    private readonly char G = '2';
+    private readonly char G = '1';
+    private readonly char B = '2';
     private readonly char Y = '3';
 
 
@@ -62,6 +62,7 @@ public class SimonSays : MonoBehaviour
         if(Main == null) 
         {
             Main = GameObject.FindWithTag("Main");
+
         }
 
         //calculating the sum of the serial number, and finding
@@ -72,7 +73,6 @@ public class SimonSays : MonoBehaviour
             if (mainScript != null) {
                 string serialNumber = mainScript.serialNumber;
                 int sum = SumOfDigits(serialNumber);
-                Debug.Log("Sum: " + sum);
 
                 //should find the ones digit unless I am dumb
                 int SpecialDigit = sum % 10;
@@ -99,10 +99,12 @@ public class SimonSays : MonoBehaviour
         */
         Answer = GenerateRandomNumberString(DifficultyModifier * 2);
         ExpectedInput = findExpectedInput(Answer, preset);
+        PlayAnswer();
     }
 
     int SumOfDigits(string serialNumber) 
     {
+        Debug.Log(serialNumber);
         int sum = 0;
         foreach (char c in serialNumber) 
         {
@@ -172,7 +174,6 @@ public class SimonSays : MonoBehaviour
 
         if (preset == 1) 
         {
-            Debug.Log("Found preset 1");
             foreach (char c in answer) 
             {
                 if (c == R) {sb.Append(B);} //red -> blue
@@ -185,26 +186,24 @@ public class SimonSays : MonoBehaviour
         }
         else if (preset == 2)
         {
-            Debug.Log("Found preset 2");
             foreach (char c in answer) 
             {
-                if (c == R) {sb.Append(R);} //red -> blue
-                else if (c == B) {sb.Append(B);} // blue -> red
-                else if (c == G) {sb.Append(Y);} // green -> green
-                else if (c == Y) {sb.Append(G);} // yellow -> yellow
+                if (c == R) {sb.Append(R);} //red -> red
+                else if (c == B) {sb.Append(B);} // blue -> blue
+                else if (c == G) {sb.Append(Y);} // green -> yellow
+                else if (c == Y) {sb.Append(G);} // yellow -> green
             }
             Debug.Log("Expected input: " + sb.ToString());
             return sb.ToString();
         }
         else if (preset == 3) 
         {
-            Debug.Log("Found preset 3");
             foreach (char c in answer) 
             {
-                if (c == R) {sb.Append(G);} //red -> blue
+                if (c == R) {sb.Append(G);} //red -> green
                 else if (c == B) {sb.Append(R);} // blue -> red
-                else if (c == G) {sb.Append(Y);} // green -> green
-                else if (c == Y) {sb.Append(B);} // yellow -> yellow
+                else if (c == G) {sb.Append(Y);} // green -> yellow
+                else if (c == Y) {sb.Append(B);} // yellow -> blue
             }
             Debug.Log("Expected input: " + sb.ToString());
             return sb.ToString();
@@ -216,13 +215,17 @@ public class SimonSays : MonoBehaviour
         }
     }
 
-    void PlayAnswer(string Answer) 
+    public void PlayAnswer() 
     {
-        StartCoroutine(PlayAnswerCoroutine(Answer));
+        if (acceptingInput)
+        {
+            StartCoroutine(PlayAnswerCoroutine(Answer));
+        }
     }
 
     private IEnumerator PlayAnswerCoroutine(string Answer) 
     {
+        acceptingInput = false;
         foreach (char c in Answer) 
         {
             switch (c)
@@ -231,22 +234,23 @@ public class SimonSays : MonoBehaviour
                     yield return ChangeSprite(redSpriteRenderer, redBright, redOriginal);
                     break;
                 case '1':
-                    yield return ChangeSprite(blueSpriteRenderer, blueBright, blueOriginal);
+                    yield return ChangeSprite(greenSpriteRenderer, greenBright, greenOriginal);
                     break;
                 case '2':
-                    yield return ChangeSprite(greenSpriteRenderer, greenBright, greenOriginal);
+                    yield return ChangeSprite(blueSpriteRenderer, blueBright, blueOriginal);
                     break;
                 case '3' :
                     yield return ChangeSprite(yellowSpriteRenderer, yellowBright, yellowOriginal);
                     break;
             }
         }
+        acceptingInput = true;
     }
 
     private IEnumerator ChangeSprite(SpriteRenderer spriteRenderer, Sprite brightSprite, Sprite originalSprite)
     {
         spriteRenderer.sprite = brightSprite;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         spriteRenderer.sprite = originalSprite;
         yield return new WaitForSeconds(0.5f);
     }

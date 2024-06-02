@@ -9,7 +9,7 @@ public class ClickHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        simonSays = FindObjectOfType<SimonSays>();
+        simonSays = transform.parent.transform.parent.GetComponent<SimonSays>();
     }
 
     void OnMouseDown()

@@ -29,6 +29,10 @@ public class NewSceneScript : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
+    public void GoToTestifyScene() {
+        SceneManager.LoadScene("Testify");
+    }
+
     public void Quit() {
         Application.Quit();
     }
