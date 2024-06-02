@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HelpScreen.unity
     guid: 2a2ac7aa2bd9cc442814be562820aab3
+  - enabled: 1
+    path: Assets/Scenes/Testify.unity
+    guid: 8c6ceaf76d61234419543283178572b4
   m_configObjects: {}
